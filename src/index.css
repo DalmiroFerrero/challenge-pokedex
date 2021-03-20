@@ -1,13 +1,81 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Navbar */
+.navbar {
+  width: 100%;
+  text-align: center;
+}
+
+.navbar-top {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+}
+
+.navbar-top img {
+  max-height: 80px;
+}
+
+.navbar-top svg {
+  font-size: 40px;
+  margin: 20px 55px 20px 585px;
+  color: red;
+}
+
+.txt-busqueda {
+  width: 90%;
+  height: 40px;
+  border: 1 solid;
+  border-color: rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  box-shadow: 2px 3px rgba(136, 136, 136, 0.2);
+  margin-right: 10px;
+}
+
+.btn {
+  text-transform: capitalize;
+  font-size: 15px;
+  color: white;
+  background-color: #363636;
+  border: none;
+  height: 40px;
+  border-radius: 10px;
+  padding: 5px 30px;
+}
+
+/* Pokemons */
+.pokemon-container {
+  width: 95%;
+  height: 530px;
+  margin: 20px auto;
+  background-color: gray;
+}
+
+.pokemons-list {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  margin: 0 auto;
+}
+
+.pokemon {
+  margin: 20px 0;
+  width: 280px;
+  height: 80px;
+  background-color: green;
+  
 }
