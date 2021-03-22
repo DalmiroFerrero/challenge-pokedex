@@ -4,11 +4,11 @@ import Pokemons from './Pokemons';
 
 
 function App() {
-  
+  const favs = 0;
 
   return (
     <div className="App">
-      <NavBar />
+      <NavBar favs={favs}/>
       <Pokemons />
     </div>
   );

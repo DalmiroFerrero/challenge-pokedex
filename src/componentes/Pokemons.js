@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Pokemon from './Pokemon';
 import { getPokemons, getInfoPokemons } from '../api';
+import { favPokemonsProvider, useFavsPokemons } from '../Context/FavContext';
 
 const Pokemons = () => {
   const [pokemons, setPokemons] = useState([]);
@@ -9,21 +10,22 @@ const Pokemons = () => {
   const [searching, setSearching] = useState(false);
   const [loading, setLoading] = useState(true);
   const [notFound, setNotFound] = useState(false);
+  const [pokemonsForPage, setPokemonsForPage] = useState(12);
 
   const searchPokemons = async () => {
     try {
       setLoading(true);
-      const data = await getPokemons();
+      const data = await getPokemons(pokemonsForPage, 0);
       const promise = data.results.map(async (pokemon) => {
         return await getInfoPokemons(pokemon.url);
       });
       const results = await Promise.all(promise);
       setPokemons(results);
       setLoading(false);
-      setpagesTotal(Math.ceil(data.count / 15));
+      setpagesTotal(Math.ceil(data.count / pokemonsForPage));
       setNotFound(false);
     } catch (e) {
-      alert(e);
+      console.log(e);
     }
   };
 
@@ -35,10 +37,14 @@ const Pokemons = () => {
 
   return (
     <div className="pokemon-container">
-      <div className="pokemons-list">
-        {pokemons.map((pokemon) => (
-          <Pokemon key={pokemon.id} pokemon={pokemon} />
-        ))}
+      <div className="list-container">
+        <div className="pokemons-list">
+          <favPokemonsProvider>
+            {pokemons.map((pokemon) => (
+              <Pokemon key={pokemon.id} pokemon={pokemon} />
+            ))}
+          </favPokemonsProvider>
+        </div>
       </div>
     </div>
   );
