@@ -151,3 +151,7 @@ p {
   color: rgb(36, 36, 36);
   cursor: pointer;
 }
+
+.fav-pokemon {
+  color: red;
+}

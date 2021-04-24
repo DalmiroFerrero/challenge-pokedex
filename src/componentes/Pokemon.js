@@ -3,8 +3,24 @@ import { FaHeart } from 'react-icons/fa';
 
 const Pokemon = (props) => {
   const { pokemon } = props;
+  const [pokemonFav, setPokemonFav] = useState(false);
 
-  console.log(pokemon.types[0].type.name);
+  useEffect(() => {
+    compFav(pokemon.id);
+  }, [pokemonFav]);
+
+  const compFav = (id) => {
+    const pokemonsFavs = JSON.parse(window.localStorage.getItem('fav')) || [];
+
+    const fav = pokemonsFavs.indexOf(id);
+
+    if (fav >= 0) {
+      setPokemonFav(true);
+    } else {
+      setPokemonFav(false);
+    }
+  };
+  // console.log(pokemon.types[0].type.name);
 
   return (
     <div className="pokemon">
@@ -21,8 +37,13 @@ const Pokemon = (props) => {
             ))}
           </div>
 
-          <div className="btn-fav">
-            <FaHeart />
+          <div className={`btn-fav${pokemonFav ? ' fav-pokemon' : ''}`}>
+            <FaHeart
+              onClick={() => {
+                props.addFavoritePokemon(pokemon.id);
+                compFav(pokemon.id);
+              }}
+            />
           </div>
         </div>
       </div>

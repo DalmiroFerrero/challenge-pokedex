@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import Pokemon from './Pokemon';
 import { getPokemons, getInfoPokemons } from '../api';
-import { favPokemonsProvider, useFavsPokemons } from '../Context/FavContext';
+// import { favPokemonsProvider, useFavsPokemons } from '../Context/FavContext';
 
-const Pokemons = () => {
+const Pokemons = (props) => {
   const [pokemons, setPokemons] = useState([]);
   const [page, setPage] = useState(0);
   const [pagesTotal, setpagesTotal] = useState(0);
@@ -29,6 +29,23 @@ const Pokemons = () => {
     }
   };
 
+  const addFavoritePokemon = (id) => {
+    let favPokemons = JSON.parse(window.localStorage.getItem('fav')) || [];
+
+    const act = [...favPokemons];
+
+    const fav = act.indexOf(id);
+    if (fav >= 0) {
+      act.splice(fav, 1);
+    } else {
+      act.push(id);
+    }
+
+    window.localStorage.setItem('fav', JSON.stringify(act));
+
+    props.changeFavs();
+  };
+
   useEffect(() => {
     if (!searching) {
       searchPokemons();
@@ -39,11 +56,13 @@ const Pokemons = () => {
     <div className="pokemon-container">
       <div className="list-container">
         <div className="pokemons-list">
-          <favPokemonsProvider>
-            {pokemons.map((pokemon) => (
-              <Pokemon key={pokemon.id} pokemon={pokemon} />
-            ))}
-          </favPokemonsProvider>
+          {pokemons.map((pokemon) => (
+            <Pokemon
+              key={pokemon.id}
+              pokemon={pokemon}
+              addFavoritePokemon={addFavoritePokemon}
+            />
+          ))}
         </div>
       </div>
     </div>
