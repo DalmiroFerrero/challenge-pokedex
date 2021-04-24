@@ -155,3 +155,62 @@ p {
 .fav-pokemon {
   color: red;
 }
+
+.loading {
+  position: absolute !important;
+  top: 40%;
+  left: 40%;
+  height: 300px;
+  width: 300px;
+  background-color: #f4f4f4;
+  border-radius: 20px;
+  border: solid #363636 1px;
+}
+
+.style_lds-ring__AieBx {
+  margin: 110px;
+}
+
+.info-pagination {
+  width: 85%;
+  height: 40px;
+  margin: 20px auto 0 auto;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.info-pagination span {
+  font-size: 18px;
+}
+
+.info-pagination select {
+  margin-left: 10px;
+}
+
+.info-pagination select,
+option {
+  font-size: 18px;
+}
+
+.left-info {
+  margin: auto 0;
+}
+
+.pagination {
+  margin: auto 0;
+  display: flex;
+}
+
+.pagination svg {
+  font-size: 24px;
+  vertical-align: middle;
+}
+
+.btn-pages {
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.btn-pages:last-child {
+  margin-right: 0;
+}
