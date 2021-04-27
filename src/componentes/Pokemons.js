@@ -2,10 +2,6 @@ import React, { useState, useEffect } from 'react';
 import Pokemon from './Pokemon';
 
 const Pokemons = (props) => {
-  
-
-  
-
   const addFavoritePokemon = (id) => {
     let favPokemons = JSON.parse(window.localStorage.getItem('fav')) || [];
 
@@ -22,9 +18,6 @@ const Pokemons = (props) => {
 
     props.changeFavs();
   };
-
-  
-
   return (
     <div className="pokemon-container">
       <div className="list-container">
