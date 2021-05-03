@@ -5,7 +5,7 @@ const Footer = () => {
     <footer>
       <p>
         Copyright &copy; 2021{' '}
-        <a href="https://ferrero-portfolio.netlify.app">
+        <a href="https://ferrero-portfolio.vercel.app/" rel="noreferrer" target="_blank">
           Dalmiro Ferrero Beverina
         </a>
       </p>

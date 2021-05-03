@@ -216,9 +216,8 @@ option {
 }
 
 footer {
-  /* margin-top: 101px; */
-  position: absolute;
-  bottom: 0;
+  margin-top: 283px;
+
   height: 50px;
   width: 100%;
   background-color: #363636;
@@ -235,4 +234,16 @@ footer p {
 footer p a {
   text-decoration: none;
   color: #f4f4f4 !important;
+}
+
+@media only screen and (max-width: 1440px) {
+  footer { 
+    margin-top: 103px;
+  }
+}
+
+@media only screen and (max-width: 1366px) {
+  footer { 
+    margin-top: 0;
+  }
 }
